@@ -29,6 +29,15 @@ def getGrayscaleImage(img):
     return gray_image
 
 
+def detectFace(cascade_classifier, img):
+    faces_rect = cascade_classifier.detectMultiScale(
+        image=img,
+        scaleFactor=1.1,
+        minNeighbors=10
+    )
+    return faces_rect
+
+
 def main():
     pic_dir = getPicDir()
 
