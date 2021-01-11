@@ -59,6 +59,18 @@ def createTrainSet(people_names, pic_dir, cascade_classifier):
     return features, labels
 
 
+def createAndTrainFaceRecognizer(features, labels):
+    features = np.array(features, dtype='object')
+    labels = np.array(labels)
+
+    face_recognizer = cv2.face.LBPHFaceRecognizer_create()
+    face_recognizer.train(features, labels)
+
+    face_recognizer.save('trained_data/face_trained.yml')
+    np.save('trained_data/features.npy', features)
+    np.save('trained_data/labels.npy', labels)
+
+
 def main():
     pic_dir = getPicDir()
 
@@ -70,6 +82,8 @@ def main():
     features, labels = createTrainSet(people_names, pic_dir, haar_cascade)
     print(f'Length of features = {len(features)}')
     print(f'Length of labels = {len(labels)}')
+
+    createAndTrainFaceRecognizer(features, labels)
 
 
 if __name__ == "__main__":
