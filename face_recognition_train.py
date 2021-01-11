@@ -80,8 +80,10 @@ def main():
     haar_cascade = getCascadeClassifier()
 
     features, labels = createTrainSet(people_names, pic_dir, haar_cascade)
+    print('==================TRAINING COMPLETED==================')
     print(f'Length of features = {len(features)}')
     print(f'Length of labels = {len(labels)}')
+    print('======================================================')
 
     createAndTrainFaceRecognizer(features, labels)
 
