@@ -21,6 +21,14 @@ def getCascadeClassifier():
     return haar_cascade
 
 
+def getGrayscaleImage(img):
+    gray_image = cv2.cvtColor(
+        src=img,
+        code=cv2.COLOR_BGR2GRAY
+    )
+    return gray_image
+
+
 def main():
     pic_dir = getPicDir()
 
