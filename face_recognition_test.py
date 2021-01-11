@@ -13,9 +13,17 @@ def loadFeaturesAndLabels():
     return features, labels
 
 
+def createAndReadFaceRecognizer():
+    face_recognizer = cv2.face.LBPHFaceRecognizer_create()
+    face_recognizer.read('trained_data/face_trained.yml')
+    return face_recognizer
+
+
 def main():
     haar_cascade = getCascadeClassifier()
     features, labels - loadFeaturesAndLabels()
+
+    face_recognizer = createAndReadFaceRecognizer()
 
 
 if __name__ == "__main__":
