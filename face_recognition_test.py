@@ -33,6 +33,14 @@ def getFaceNames(pic_dir):
     return people_names
 
 
+def getGrayscaleImage(img):
+    gray_image = cv2.cvtColor(
+        src=img,
+        code=cv2.COLOR_BGR2GRAY
+    )
+    return gray_image
+
+
 def main():
     haar_cascade = getCascadeClassifier()
     features, labels - loadFeaturesAndLabels()
@@ -41,6 +49,9 @@ def main():
 
     pic_dir = getPicDir()
     people_names = getFaceNames(pic_dir)
+
+    img = cv2.imread(r'../images\faces\val\ben_afflek/1.jpg')
+    gray_image = getGrayscaleImage(img)
 
 
 if __name__ == "__main__":
