@@ -41,15 +41,18 @@ def getGrayscaleImage(img):
     return gray_image
 
 
-def recognize_face(img, cascade_classifier, face_recognizer, people_names):
+def recognize_face(img, gray_img,
+                   cascade_classifier,
+                   face_recognizer,
+                   people_names):
     faces_rect = cascade_classifier.detectMultiScale(
-        image=img,
+        image=gray_img,
         scaleFactor=1.1,
         minNeighbors=4
     )
 
     for (x, y, w, h) in faces_rect:
-        faces_roi = img[y: y + h, x: x + w]
+        faces_roi = gray_img[y: y + h, x: x + w]
 
         label, confidence = face_recognizer.predict(faces_roi)
         print(
@@ -86,12 +89,13 @@ def main():
     pic_dir = getPicDir()
     people_names = getFaceNames(pic_dir)
 
-    img = cv2.imread('images/faces/val/ben_afflek/1.jpg')
+    img = cv2.imread('images/faces/val/ben_afflek/2.jpg')
     gray_image = getGrayscaleImage(img)
 
-    cv2.imshow('Unidentified Person', gray_image)
+    cv2.imshow('Unidentified Person', img)
 
     detected_image = recognize_face(
+        img,
         gray_image,
         haar_cascade,
         face_recognizer,
