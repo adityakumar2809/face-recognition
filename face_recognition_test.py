@@ -19,11 +19,27 @@ def createAndReadFaceRecognizer():
     return face_recognizer
 
 
+def getPicDir():
+    cwd = os.path.dirname(__file__)
+    pic_dir = os.path.join(cwd, 'images\\faces\\train')
+    return pic_dir
+
+
+def getFaceNames(pic_dir):
+    people_names = []
+    for name in os.listdir(pic_dir):
+        people_names.append(name)
+    return people_names
+
+
 def main():
     haar_cascade = getCascadeClassifier()
     features, labels - loadFeaturesAndLabels()
 
     face_recognizer = createAndReadFaceRecognizer()
+
+    pic_dir = getPicDir()
+    people_names = getFaceNames(pic_dir)
 
 
 if __name__ == "__main__":
