@@ -38,6 +38,12 @@ def detectFace(cascade_classifier, img):
     return faces_rect
 
 
+def getCroppedFaces(img, faces_rect):
+    for (x, y, w, h) in faces_rect:
+        faces_roi = img[y: y + h, x: x + w]
+    return faces_roi
+
+
 def main():
     pic_dir = getPicDir()
 
