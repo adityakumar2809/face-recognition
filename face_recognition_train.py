@@ -16,10 +16,18 @@ def getFaceNames(pic_dir):
     return people_names
 
 
+def getCascadeClassifier():
+    haar_cascade = cv2.CascadeClassifier('haar_face.xml')
+    return haar_cascade
+
+
 def main():
     pic_dir = getPicDir()
+
     people_names = getFaceNames(pic_dir)
     print(people_names)
+
+    haar_cascade = getCascadeClassifier()
 
 
 if __name__ == "__main__":
