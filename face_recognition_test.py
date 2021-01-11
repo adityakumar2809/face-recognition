@@ -9,8 +9,8 @@ def getCascadeClassifier():
 
 
 def loadFeaturesAndLabels():
-    features = np.load('trained_data/features.npy')
-    labels = np.load('trained_data/labels.npy')
+    features = np.load('trained_data/features.npy', allow_pickle=True)
+    labels = np.load('trained_data/labels.npy', allow_pickle=True)
     return features, labels
 
 
